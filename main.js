@@ -1,19 +1,35 @@
-var box = document.getElementById('marbleBox');
 
+var box = document.getElementById('marbleBox');
 var marble = document.getElementById('marble');
 
 var hole = document.getElementById('hole');
-hole.style.top = "85%";
-hole.style.left = "85%";
+hole.style.top = "80%";
+hole.style.left = "80%";
 
 hole.addEventListener('click', () => {
   console.log("hole clicked");
 })
 
-var maxX = box.clientWidth  - marble.clientWidth;
-var maxY = box.clientHeight - marble.clientHeight;
 
 window.addEventListener("deviceorientation", handleOrientation, true);
+
+
+
+    const colourBox = (hue) => {
+      const hslaString = `hsla(${hue}, 100%, 60%, 1)`
+      console.log(hslaString);
+      box.style.backgroundColor = hslaString;
+    }
+
+    var i = 0, max = 360, cnt = 10;
+    const timer = function() {
+
+      i += cnt;
+      if (i===max) {cnt = -10;}
+      if (i===0)  {cnt = 10;}
+      colourBox(i)
+      setTimeout(timer, 60);
+    }
 
 function handleOrientation(event) {
   var absolute = event.absolute;
@@ -25,19 +41,27 @@ function handleOrientation(event) {
   marble.style.top  = x + '%';
   marble.style.left = y + '%';
 
-  let xupper = 85 + 2;
-  let xlower = 85 - 2;
+  let xupper = 82;
+  let xlower = 78;
   let xtrue = (xupper > x && xlower < x);
 
-  let yupper = 85 + 2;
-  let ylower = 85 - 2;
+  let yupper = 82;
+  let ylower = 78;
   let ytrue = (xupper > y && xlower < y);
+
+
+
 
   if(xtrue && ytrue) {
     marble.style.display = 'none';
     window.navigator.vibrate(300);
 
-    let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`
+
+    timer();
+
+    //setInterval(timer, 3);
+
+
 
     setTimeout(() => {
       marble.style.display = 'inline-block';
