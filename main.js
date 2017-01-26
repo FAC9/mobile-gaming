@@ -3,14 +3,11 @@ var box = document.getElementById('marbleBox');
 var marble = document.getElementById('marble');
 
 var hole = document.getElementById('hole');
-
-if(hole.style.top) {
-  
-}
+hole.style.top = "85%";
+hole.style.left = "85%";
 
 hole.addEventListener('click', () => {
-  marble.style.top = '70%'
-  marble.style.left = '70%'
+  console.log("hole clicked");
 })
 
 var maxX = box.clientWidth  - marble.clientWidth;
@@ -28,7 +25,27 @@ function handleOrientation(event) {
   marble.style.top  = x + '%';
   marble.style.left = y + '%';
 
-  const output = document.getElementsByClassName('output');
-  output.innerHTML  = "beta : " + x + "\n";
-  output.innerHTML += "gamma: " + y + "\n";
+  let xupper = 85 + 2;
+  let xlower = 85 - 2;
+  let xtrue = (xupper > x && xlower < x);
+
+  let yupper = 85 + 2;
+  let ylower = 85 - 2;
+  let ytrue = (xupper > y && xlower < y);
+
+  if(xtrue && ytrue) {
+    marble.style.display = 'none';
+    window.navigator.vibrate(300);
+
+    let hslaString = `hsla(${hue}, ${sat}%, ${light}%, ${opacity})`
+
+    setTimeout(() => {
+      marble.style.display = 'inline-block';
+    }, 1000);
+
+  }
+
+  // const output = document.getElementById('output');
+  // output.innerHTML  = "beta : " + x + "\n";
+  // output.innerHTML += "gamma: " + y + "\n";
 }

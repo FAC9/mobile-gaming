@@ -20,10 +20,9 @@
 
 .box__hole {
   position: absolute;
-  bottom: 5%;
-  right: 5%;
   background-color: black;
   border-radius: 30%;
   width: 4.5rem;
   height: 4.5rem;
+  z-index: -1;
 }
