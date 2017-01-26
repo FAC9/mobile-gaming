@@ -6,6 +6,44 @@ var hole = document.getElementById('hole');
 hole.style.top = "80%";
 hole.style.left = "80%";
 
+var soundx = 0
+var soundy = 0
+
+var freeverb = new Tone.Freeverb().toMaster();
+
+var feedbackDelay = new Tone.FeedbackDelay("8n", 0.7).connect(freeverb);
+var pling = new Tone.Synth().connect(freeverb)
+var am = new Tone.NoiseSynth().connect(freeverb);
+var pluck = new Tone.PluckSynth().toMaster()
+
+
+
+var loop2 = new Tone.Loop(function(time){
+  pling.triggerAttack((soundx + 400) / 4 )
+}, "4n").start(0);
+
+var loop3 = new Tone.Loop(function(time){
+  am.triggerAttack((soundy + 400) / 4 )
+}, "2n").start(0);
+
+var loop1 = new Tone.Loop(function(time){
+  pling.triggerAttack(soundx/4)
+}, "4n").start(0);
+
+var loop4 = new Tone.Loop(function(time){
+  pluck.triggerAttack(soundy/4)
+}, "2n").start(0);
+
+
+Tone.Transport.start();
+
+document.onmousemove = (e) => {
+  x = e.x
+  y = e.y
+}
+// var button = document.getElementById('play')
+
+
 hole.addEventListener('click', () => {
   console.log("hole clicked");
 })
@@ -36,6 +74,9 @@ function handleOrientation(event) {
   var z    = event.alpha;
   var x     = (event.beta + 90)/1.8;
   var y    = (event.gamma + 90)/1.8;
+
+  soundx = x
+  soundy = y
 
   if(y===90) y
   marble.style.top  = x + '%';
