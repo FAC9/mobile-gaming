@@ -1,0 +1,19 @@
+{
+  "name": "mobile-gaming",
+  "version": "1.0.0",
+  "description": "mobile gaming workshop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FAC9/mobile-gaming.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FAC9/mobile-gaming/issues"
+  },
+  "homepage": "https://github.com/FAC9/mobile-gaming#readme"
+}
