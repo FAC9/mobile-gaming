@@ -1,6 +1,5 @@
 const Hapi = require('hapi');
 const Inert = require('inert');
-const routes = require('./routes.js');
 
 const server = new Hapi.Server();
 
@@ -11,13 +10,18 @@ server.connection({
 server.register(Inert, (err) => {
   if (err) throw err;
 
-  server.routes({
+  server.route({
     method: 'GET',
     path: '/{param*}',
     handler: {
       directory: {
-        path: 'public'
+        path: './'
       }
     }
   });
-};
+});
+
+server.start( (err) => {
+  if (err) throw err;
+  console.log(`Server is running on port: ${server.info.uri}`);
+});
