@@ -1,0 +1,20 @@
+{
+  "name": "marbles",
+  "version": "1.0.0",
+  "description": "mobile gaming workshop",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FAC9/mobile-gaming.git"
+  },
+  "author": "Will and Nick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FAC9/mobile-gaming/issues"
+  },
+  "homepage": "https://github.com/FAC9/mobile-gaming#readme"
+}

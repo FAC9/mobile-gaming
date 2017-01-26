@@ -1,8 +1,9 @@
 var marble = document.getElementById('marble');
 
-
-var hol = document.getElementById('hole');
-hol.addEventListener('click', () => {
+var hole = document.getElementById('hole');
+hole.addEventListener('click', () => {
   marble.style.top = '30%'
   marble.style.left = '30%'
 })
+
+window.addEventListener("deviceorientation", handleOrientation, true);
