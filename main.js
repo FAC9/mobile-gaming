@@ -6,8 +6,8 @@ var hole = document.getElementById('hole');
 hole.style.top = "80%";
 hole.style.left = "80%";
 
-var soundx = 0
-var soundy = 0
+var soundx = 100
+var soundy = 100
 
 var freeverb = new Tone.Freeverb().toMaster();
 
